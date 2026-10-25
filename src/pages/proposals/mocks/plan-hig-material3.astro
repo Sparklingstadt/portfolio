@@ -1,0 +1,250 @@
+---
+// Generated from the original mock; shared text comes from src/data/site.json.
+import { certification, mockDataJson, profileLinks, profileText, text } from '../../../lib/site.js';
+---
+<!doctype html>
+<html lang="ja" data-design="hig" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>推奨案 HIG ⇄ Material</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@500;700&amp;family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&amp;display=block">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer is:inline></script>
+<script type="application/json" id="mock-data" set:html={mockDataJson}></script>
+<script src="../data.js" defer is:inline></script>
+</head>
+<body>
+
+<div class="design-bar">
+  <div class="wrap design-bar__inner">
+    <span class="design-bar__label">このページのデザイン</span>
+    <div class="seg seg--sys" role="group" aria-label="デザインシステム" data-control="design">
+      <button type="button" class="seg__btn" data-value="hig" aria-pressed="true"><span class="material-symbols-rounded seg__check only-material" aria-hidden="true">check</span>HIG</button>
+      <button type="button" class="seg__btn" data-value="material" aria-pressed="false"><span class="material-symbols-rounded seg__check only-material" aria-hidden="true">check</span>Material 3</button>
+    </div>
+    <ul class="diffs" id="diffs">
+      <li>書体: システムフォント</li>
+      <li>主な操作: 文脈に置く角丸ボタン</li>
+      <li>選択: セグメントコントロール</li>
+      <li>スイッチ: 緑のトラック</li>
+      <li>階層: 白いカード・区切り線・すりガラス</li>
+    </ul>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <span class="brand"><span data-profile="name">{profileText.name}</span></span>
+    <nav class="nav" aria-label="セクション">
+      <a href="#axes" data-content="label.axes">{text('label.axes')}</a>
+      <a href="#projects" data-content="label.projects">{text('label.projects')}</a>
+      <a href="#notes" data-content="label.notes">{text('label.notes')}</a>
+      <a href="#contact" data-content="label.contact">{text('label.contact')}</a>
+    </nav>
+    <div class="seg seg--lang" role="group" aria-label="表示言語" data-control="lang">
+      <button type="button" class="seg__btn" lang="ja" data-value="ja" aria-pressed="true"><span class="material-symbols-rounded seg__check only-material" aria-hidden="true">check</span>JA</button>
+      <button type="button" class="seg__btn" lang="zh-Hans" data-value="zh-Hans" aria-pressed="false"><span class="material-symbols-rounded seg__check only-material" aria-hidden="true">check</span>中</button>
+      <button type="button" class="seg__btn" lang="ru" data-value="ru" aria-pressed="false"><span class="material-symbols-rounded seg__check only-material" aria-hidden="true">check</span>RU</button>
+      <button type="button" class="seg__btn" lang="cs" data-value="cs" aria-pressed="false"><span class="material-symbols-rounded seg__check only-material" aria-hidden="true">check</span>CS</button>
+      <button type="button" class="seg__btn" lang="en" data-value="en" aria-pressed="false"><span class="material-symbols-rounded seg__check only-material" aria-hidden="true">check</span>EN</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap main">
+
+  <section class="hero">
+    <div class="hero__intro">
+      <p class="hero__hello"><span lang="ja" data-content-lang="greeting">{text('greeting.ja')}</span><span lang="zh-Hans" data-content-lang="greeting">{text('greeting.zh-Hans')}</span><span lang="ru" data-content-lang="greeting">{text('greeting.ru')}</span><span lang="cs" data-content-lang="greeting">{text('greeting.cs')}</span></p>
+      <h1 class="hero__title" id="tagline" lang="ja" data-content-lang="tagline">{text('tagline.ja')}</h1>
+      <p class="hero__bio" data-content="intro.web">{text('intro.web')}</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#contact"><span class="material-symbols-rounded only-material" aria-hidden="true">mail</span><span data-content="label.contactMe">{text('label.contactMe')}</span></a>
+        <a class="btn btn--secondary" href="#projects" data-content="label.viewProjects">{text('label.viewProjects')}</a>
+      </div>
+    </div>
+    <div class="code-card">
+      <div class="code-card__name">me.ts</div>
+      <div class="code-card__scroll" tabindex="0" role="region" aria-label="me.ts">
+<pre><span class="tok-kw">interface</span> Me {'{'}
+  <span class="tok-prop">role</span>: <span class="tok-str">"Web Engineer"</span>;
+  <span class="tok-prop">stack</span>: [<span class="tok-str">"TypeScript"</span>, <span class="tok-str">"Node.js"</span>];
+  <span class="tok-prop">learning</span>: [<span class="tok-str">"Go"</span>, <span class="tok-str">"Kotlin"</span>];
+  <span class="tok-prop">designSystem</span>: <span class="tok-str">"<span id="sys-name">HIG</span>"</span>;
+  <span class="tok-prop">speaks</span>: [<span class="tok-str">"ja"</span>, <span class="tok-str">"zh"</span>, <span class="tok-str">"ru"</span>, <span class="tok-str">"cs"</span>];
+{'}'}</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="axes">
+    <h2 data-content="label.axes">{text('label.axes')}</h2>
+    <div class="axes">
+      <div class="axis">
+        <span class="axis__icon only-material" aria-hidden="true"><span class="material-symbols-rounded">data_object</span></span>
+        <span class="axis__eyebrow only-hig" data-content="axis.typesLabel">{text('axis.typesLabel')}</span>
+        <h3 data-content="axis.typesTitle">{text('axis.typesTitle')}</h3>
+        <p data-content="axis.typesBody">{text('axis.typesBody')}</p>
+      </div>
+      <div class="axis">
+        <span class="axis__icon only-material" aria-hidden="true"><span class="material-symbols-rounded">public</span></span>
+        <span class="axis__eyebrow only-hig" data-content="axis.standardsLabel">{text('axis.standardsLabel')}</span>
+        <h3 data-content="axis.standardsTitle">{text('axis.standardsTitle')}</h3>
+        <p>Web標準と Node.js を土台に、HIG と Material を読み比べて使いやすさを判断する。</p>
+      </div>
+      <div class="axis">
+        <span class="axis__icon only-material" aria-hidden="true"><span class="material-symbols-rounded">translate</span></span>
+        <span class="axis__eyebrow only-hig" data-content="axis.languagesLabel">{text('axis.languagesLabel')}</span>
+        <h3 data-content="axis.languagesTitle">{text('axis.languagesTitle')}</h3>
+        <p data-content="axis.languagesBody">{text('axis.languagesBody')}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section__head">
+      <h2 data-content="label.projects">{text('label.projects')}</h2>
+      <div class="seg seg--filter" role="group" aria-label="種類で絞り込む" data-control="filter">
+        <button type="button" class="seg__btn" data-value="all" aria-pressed="true"><span class="material-symbols-rounded seg__check only-material" aria-hidden="true">check</span><span data-content="label.filterAll">{text('label.filterAll')}</span></button>
+        <button type="button" class="seg__btn" data-value="web" aria-pressed="false"><span class="material-symbols-rounded seg__check only-material" aria-hidden="true">check</span>Web</button>
+        <button type="button" class="seg__btn" data-value="cli" aria-pressed="false"><span class="material-symbols-rounded seg__check only-material" aria-hidden="true">check</span>CLI</button>
+        <button type="button" class="seg__btn" data-value="mobile" aria-pressed="false"><span class="material-symbols-rounded seg__check only-material" aria-hidden="true">check</span><span data-content="label.filterMobile">{text('label.filterMobile')}</span></button>
+      </div>
+    </div>
+    <div class="projects">
+      <article class="project" data-kind="web">
+        <span class="project__kind">WEB</span>
+        <h3 data-content="project.name1">{text('project.name1')}</h3>
+        <div class="tags">
+          <span class="tag"><span class="material-symbols-rounded only-material" aria-hidden="true">code</span>TypeScript</span>
+          <span class="tag"><span class="material-symbols-rounded only-material" aria-hidden="true">code</span>Node.js</span>
+        </div>
+        <dl class="project__facts">
+          <dt data-content="label.problem">{text('label.problem')}</dt><dd data-content="project.problem">{text('project.problem')}</dd>
+          <dt data-content="label.decision">{text('label.decision')}</dt><dd data-content="project.decision">{text('project.decision')}</dd>
+          <dt data-content="label.learned">{text('label.learned')}</dt><dd data-content="project.learned">{text('project.learned')}</dd>
+        </dl>
+        <a class="project__link" href="#projects" data-content="label.readMore">{text('label.readMore')}</a>
+      </article>
+      <article class="project" data-kind="cli">
+        <span class="project__kind">CLI</span>
+        <h3 data-content="project.name2">{text('project.name2')}</h3>
+        <div class="tags">
+          <span class="tag"><span class="material-symbols-rounded only-material" aria-hidden="true">code</span>Go</span>
+        </div>
+        <dl class="project__facts">
+          <dt data-content="label.problem">{text('label.problem')}</dt><dd data-content="project.problem">{text('project.problem')}</dd>
+          <dt data-content="label.decision">{text('label.decision')}</dt><dd data-content="project.compare">{text('project.compare')}</dd>
+          <dt data-content="label.learned">{text('label.learned')}</dt><dd data-content="project.learned">{text('project.learned')}</dd>
+        </dl>
+        <a class="project__link" href="#projects" data-content="label.readMore">{text('label.readMore')}</a>
+      </article>
+      <article class="project" data-kind="mobile">
+        <span class="project__kind">MOBILE</span>
+        <h3 data-content="project.name3">{text('project.name3')}</h3>
+        <div class="tags">
+          <span class="tag"><span class="material-symbols-rounded only-material" aria-hidden="true">code</span>Kotlin</span>
+          <span class="tag"><span class="material-symbols-rounded only-material" aria-hidden="true">code</span>Compose</span>
+        </div>
+        <dl class="project__facts">
+          <dt data-content="label.problem">{text('label.problem')}</dt><dd data-content="project.problem">{text('project.problem')}</dd>
+          <dt data-content="label.decision">{text('label.decision')}</dt><dd>[HIG と Material のどちらに寄せたか、その理由]</dd>
+          <dt data-content="label.learned">{text('label.learned')}</dt><dd data-content="project.learned">{text('project.learned')}</dd>
+        </dl>
+        <a class="project__link" href="#projects" data-content="label.readMore">{text('label.readMore')}</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--list" id="display">
+    <h2>表示</h2>
+    <div class="list list--narrow">
+      <div class="list-row">
+        <span class="material-symbols-rounded list-row__icon only-material" aria-hidden="true">dark_mode</span>
+        <label class="list-row__label" for="sw-dark" data-content="label.darkMode">{text('label.darkMode')}</label>
+        <button class="switch" id="sw-dark" type="button" role="switch" aria-checked="false"><span class="switch__thumb" aria-hidden="true"><span class="material-symbols-rounded switch__check only-material">check</span></span></button>
+      </div>
+    </div>
+    <p class="section__note">実際のサイトでは、どちらのデザインも同じ HTML に CSS カスタムプロパティを当て替えて切り替えます。選んだデザインは保存し、OS のダークモード設定にも従います。</p>
+  </section>
+
+  <section class="section section--list" id="notes">
+    <h2 data-content="label.notes">{text('label.notes')}</h2>
+    <div class="list">
+      <a class="list-row note" href="#notes">
+        <span class="note__avatar only-material" aria-hidden="true"><span class="material-symbols-rounded">compare</span></span>
+        <span class="note__tile only-hig" aria-hidden="true" style="--tile: #5E5CE6">UX</span>
+        <span class="note__text"><span class="note__kind only-material" data-content="note.kindUiux">{text('note.kindUiux')}</span><span>[HIG と Material の読み比べ:タイトル]</span></span>
+        <span class="note__date" data-content="note.date">{text('note.date')}</span>
+        <svg class="note__chevron only-hig" width="8" height="14" viewBox="0 0 8 14" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="list-row note" href="#notes">
+        <span class="note__avatar only-material" aria-hidden="true"><span class="material-symbols-rounded">menu_book</span></span>
+        <span class="note__tile only-hig" aria-hidden="true" style="--tile: #0A64D8">HIG</span>
+        <span class="note__text"><span class="note__kind only-material">HIG</span><span data-content="note.hig">{text('note.hig')}</span></span>
+        <span class="note__date" data-content="note.date">{text('note.date')}</span>
+        <svg class="note__chevron only-hig" width="8" height="14" viewBox="0 0 8 14" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="list-row note" href="#notes">
+        <span class="note__avatar only-material" aria-hidden="true"><span class="material-symbols-rounded">terminal</span></span>
+        <span class="note__tile only-hig" aria-hidden="true" style="--tile: #248A3D">JS</span>
+        <span class="note__text"><span class="note__kind only-material" data-content="note.kindTech">{text('note.kindTech')}</span><span data-content="note.web">{text('note.web')}</span></span>
+        <span class="note__date" data-content="note.date">{text('note.date')}</span>
+        <svg class="note__chevron only-hig" width="8" height="14" viewBox="0 0 8 14" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="list-row note" href="#notes">
+        <span class="note__avatar only-material" aria-hidden="true"><span class="material-symbols-rounded">translate</span></span>
+        <span class="note__tile only-hig" aria-hidden="true" style="--tile: #C93400">語</span>
+        <span class="note__text"><span class="note__kind only-material" data-content="note.kindLanguage">{text('note.kindLanguage')}</span><span data-content="note.languages">{text('note.languages')}</span></span>
+        <span class="note__date" data-content="note.date">{text('note.date')}</span>
+        <svg class="note__chevron only-hig" width="8" height="14" viewBox="0 0 8 14" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="section section--list" id="certifications">
+    <h2 data-content="label.certifications">{text('label.certifications')}</h2>
+    <div class="list list--narrow">
+      <div class="list-row">
+        <span class="material-symbols-rounded list-row__icon only-material" aria-hidden="true">workspace_premium</span>
+        <span class="list-row__label" data-certification="hsk1">{certification('hsk1')}</span>
+      </div>
+      <div class="list-row">
+        <span class="material-symbols-rounded list-row__icon only-material" aria-hidden="true">workspace_premium</span>
+        <span class="list-row__label" data-certification="hsk2">{certification('hsk2')}</span>
+      </div>
+      <div class="list-row">
+        <span class="material-symbols-rounded list-row__icon only-material" aria-hidden="true">workspace_premium</span>
+        <span class="list-row__label" data-certification="hsk3">{certification('hsk3')}</span>
+      </div>
+      <div class="list-row">
+        <span class="material-symbols-rounded list-row__icon only-material" aria-hidden="true">workspace_premium</span>
+        <span class="list-row__label" data-certification="hsk4">{certification('hsk4')}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--list" id="contact">
+    <h2 data-content="label.contact">{text('label.contact')}</h2>
+    <div class="list list--narrow">
+      <div class="list-row">
+        <span class="material-symbols-rounded list-row__icon only-material" aria-hidden="true">mail</span>
+        <span class="list-row__label" data-content="label.mail">{text('label.mail')}</span>
+        <span class="contact__mail"><span data-profile="email">{profileText.email}</span></span>
+      </div>
+      <a class="list-row" href={profileLinks.github} data-profile-link="github">
+        <span class="material-symbols-rounded list-row__icon only-material" aria-hidden="true">code</span>
+        <span class="list-row__label">GitHub</span>
+        <span class="contact__id"><span data-profile="github">{profileText.github}</span></span>
+      </a>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

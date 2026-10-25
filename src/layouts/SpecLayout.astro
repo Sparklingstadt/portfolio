@@ -1,0 +1,71 @@
+---
+// Shell for spec-style pages: head, fonts, the shared stylesheet, and the
+// theme toggle (follows prefers-color-scheme until the visitor picks one).
+import '../styles/spec.css';
+
+interface Props {
+  lang: string;
+  title: string;
+  description?: string;
+  social?: string;
+  canonical?: string;
+  alternates?: { hreflang: string; href: string }[];
+  noindex?: boolean;
+}
+
+const { lang, title, description, social, canonical, alternates = [], noindex = false } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {description && <meta name="description" content={description}>}
+  {noindex && <meta name="robots" content="noindex">}
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content={title}>
+  {social && <meta property="og:description" content={social}>}
+  <meta property="og:type" content="website">
+  {canonical && <meta property="og:url" content={canonical}>}
+  {canonical && <link rel="canonical" href={canonical}>}
+  {alternates.map(({ hreflang, href }) => <link rel="alternate" hreflang={hreflang} href={href}>)}
+  <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+  <script is:inline>
+    // Apply a saved theme before first paint.
+    try {
+      const saved = localStorage.getItem('color-theme');
+      if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+    } catch { /* Storage is optional. */ }
+  </script>
+  <title>{title}</title>
+</head>
+<body>
+  <slot />
+  <script is:inline>
+    (() => {
+      const root = document.documentElement;
+      const toggle = document.querySelector('.theme-toggle');
+      if (!toggle) return;
+      const preference = window.matchMedia('(prefers-color-scheme: dark)');
+      const isDark = () => (root.dataset.theme ? root.dataset.theme === 'dark' : preference.matches);
+      const update = () => {
+        toggle.setAttribute('aria-label', isDark() ? toggle.dataset.labelLight : toggle.dataset.labelDark);
+        document.querySelector('meta[name="theme-color"]').content = isDark() ? '#15171a' : '#ffffff';
+      };
+      toggle.hidden = false;
+      toggle.addEventListener('click', () => {
+        root.dataset.theme = isDark() ? 'light' : 'dark';
+        try { localStorage.setItem('color-theme', root.dataset.theme); } catch { /* Storage is optional. */ }
+        update();
+      });
+      preference.addEventListener('change', update);
+      update();
+    })();
+  </script>
+</body>
+</html>

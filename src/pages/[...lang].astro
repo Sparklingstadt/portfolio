@@ -1,0 +1,237 @@
+---
+// The main page, built once per language: / (ja), /en/, /zh/.
+import SpecLayout from '../layouts/SpecLayout.astro';
+import { certifications, projects } from '../lib/site.js';
+import { DEFAULT_LANGUAGE, LANGUAGES, LANGUAGE_NAMES, htmlLang, localized, pathFor, t as translate } from '../i18n/index.js';
+
+export function getStaticPaths() {
+  return LANGUAGES.map((language) => ({
+    params: { lang: language === DEFAULT_LANGUAGE ? undefined : language },
+    props: { language },
+  }));
+}
+
+const { language } = Astro.props;
+const t = (key) => translate(language, key);
+const lang = htmlLang(language);
+const site = Astro.site ? new URL(pathFor(language), Astro.site).href : undefined;
+const alternates = [
+  ...LANGUAGES.map((code) => ({ hreflang: htmlLang(code), href: new URL(pathFor(code), Astro.site).href })),
+  { hreflang: 'x-default', href: new URL(pathFor(DEFAULT_LANGUAGE), Astro.site).href },
+];
+const updated = '2026-10-25';
+const updatedLabel = new Intl.DateTimeFormat(lang, { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${updated}T00:00:00Z`));
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const repository = 'https://github.com/Sparklingstadt/portfolio';
+const toc = [
+  ['abstract', '1', t('s1.title')],
+  ['status', '2', t('s2.title')],
+  ['conformance', '3', t('s3.title')],
+  ['idl', '4', 'IDL: interface Me'],
+  ['projects', '5', t('s5.title')],
+  ['environment', '6', t('s6.title')],
+  ['natural-languages', '7', t('s7.title')],
+  ['certifications', '8', t('certs.title')],
+  ['contact', '9', t('s8.title')],
+  ['proposals', '10', t('s9.title')],
+  ['references', '', t('refs.title')],
+];
+const requirements = [
+  ['MUST', 's3.r1'], ['MUST', 's3.r2'], ['SHOULD', 's3.r3'], ['SHOULD', 's3.r4'],
+];
+const naturalLanguages = [
+  { name: '中文', tag: 'zh-Hans', sample: '我在学中文。' },
+  { name: 'Русский', tag: 'ru', sample: 'Я изучаю русский язык.' },
+  { name: 'Čeština', tag: 'cs', sample: 'Učím se česky.' },
+];
+---
+<SpecLayout
+  lang={lang}
+  title={t('meta.title')}
+  description={t('meta.description')}
+  social={t('meta.social')}
+  canonical={site}
+  alternates={alternates}
+>
+  <a class="skip-link" href="#main">{t('skip')}</a>
+
+  <header class="spec-header">
+    <div class="wrap header-inner">
+      <div class="header-bar">
+        <span class="badge">Living Standard</span>
+        <span class="updated">{t('header.updated')} <time datetime={updated}>{updatedLabel}</time></span>
+        <span class="controls">
+          <nav class="language-links" aria-label={t('a11y.language')}>
+            {LANGUAGES.map((code) => (
+              <a href={pathFor(code)} lang={htmlLang(code)} hreflang={htmlLang(code)} aria-current={code === language ? 'page' : undefined}>{LANGUAGE_NAMES[code]}</a>
+            ))}
+          </nav>
+          <button class="theme-toggle" type="button" data-label-light={t('theme.light')} data-label-dark={t('theme.dark')} aria-label={t('theme.dark')} hidden><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button>
+        </span>
+      </div>
+      <h1>Sparklingstadt Standard</h1>
+      <p class="subtitle">{t('header.subtitle')}</p>
+      <dl class="meta">
+        <dt>{t('header.thisVersion')}</dt>
+        <dd><a href={site}>{site}</a></dd>
+        <dt>{t('header.participate')}</dt>
+        <dd><a href="https://github.com/Sparklingstadt">GitHub Sparklingstadt</a></dd>
+        <dt>{t('header.editor')}</dt>
+        <dd>Sparklingstadt</dd>
+      </dl>
+    </div>
+  </header>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label={t('a11y.toc')}>
+      <h2 class="toc-title">{t('toc.title')}</h2>
+      <ol>
+        {toc.map(([id, number, title]) => (
+          <li><a href={`#${id}`}><span class="secno">{number}</span> <span>{title}</span></a></li>
+        ))}
+      </ol>
+    </nav>
+
+    <main id="main">
+      <section aria-labelledby="abstract">
+        <h2 id="abstract"><span class="secno">§1</span> <span>{t('s1.title')}</span></h2>
+        <p>{t('s1.body')}</p>
+      </section>
+
+      <section aria-labelledby="status">
+        <h2 id="status"><span class="secno">§2</span> <span>{t('s2.title')}</span></h2>
+        <p>{t('s2.body')}</p>
+        <div class="note" role="note">
+          <span class="box-label">{t('note.label')}</span>
+          <p>{t('s2.note')}</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="conformance">
+        <h2 id="conformance"><span class="secno">§3</span> <span>{t('s3.title')}</span></h2>
+        <p>{t('s3.intro')}</p>
+        <ol class="requirements">
+          {requirements.map(([keyword, key]) => <li><strong class="rfc2119">{keyword}</strong> <span>{t(key)}</span></li>)}
+        </ol>
+      </section>
+
+      <section aria-labelledby="idl">
+        <h2 id="idl"><span class="secno">§4</span> IDL: interface Me</h2>
+        <p>{t('s4.intro')}</p>
+        <pre class="idl"><code><span class="kw">interface</span> Me {'{'}
+  <span class="kw">readonly</span> <span class="prop">role</span>: <span class="str">"Web Engineer (aspiring)"</span>;
+  <span class="prop">stack</span>: [<span class="str">"TypeScript"</span>, <span class="str">"Next.js"</span>, <span class="str">"Ruby on Rails"</span>, <span class="str">"Rust"</span>];
+  <span class="prop">interests</span>: [<span class="str">"Go"</span>, <span class="str">"Kotlin"</span>, <span class="str">"Node.js"</span>, <span class="str">"Web Standards"</span>];
+  <span class="prop">reads</span>: <span class="str">"Apple Human Interface Guidelines"</span>;
+  <span class="prop">desktop</span>: [<span class="str">"macOS"</span>, <span class="str">"Arch Linux + Hyprland"</span>];
+  <span class="prop">languages</span>: [<span class="str" lang="ja">"日本語"</span>, <span class="str" lang="zh-Hans">"中文"</span>, <span class="str" lang="ru">"Русский"</span>, <span class="str" lang="cs">"Čeština"</span>];
+{'}'}</code></pre>
+        <div class="note" role="note">
+          <span class="box-label">{t('note.label')}</span>
+          <p>{t('s4.note')}</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="projects">
+        <h2 id="projects"><span class="secno">§5</span> <span>{t('s5.title')}</span></h2>
+        <p>{t('s5.intro')}</p>
+        {projects.map((project, index) => (
+          <article class="project" aria-labelledby={project.id}>
+            <h3 id={project.id}><span class="secno">§5.{index + 1}</span> {project.name}</h3>
+            <p>{localized(project.description, language)}</p>
+            <dl class="facts">
+              <dt>{t('project.category')}</dt><dd>{localized(project.category, language)}</dd>
+              <dt>{t('project.stack')}</dt><dd class="mono">{project.stack.join(' · ')}</dd>
+              <dt>{t('project.links')}</dt><dd><a href={project.links.app}>{t('links.visit')}</a> · <a href={project.links.source}>{t(project.links.sourcePrivate ? 'links.privateSource' : 'links.source')}</a></dd>
+            </dl>
+          </article>
+        ))}
+        <p><a href="https://github.com/Sparklingstadt?tab=repositories">{t('links.all')}</a></p>
+      </section>
+
+      <section aria-labelledby="environment">
+        <h2 id="environment"><span class="secno">§6</span> <span>{t('s6.title')}</span></h2>
+        <p>{t('s6.macos')}</p>
+        <p>{t('s6.linux')}</p>
+        <div class="note" role="note">
+          <span class="box-label">{t('note.label')}</span>
+          <p>{t('s6.note')}</p>
+        </div>
+        <div class="example">
+          <span class="box-label">{t('example.label')} 1</span>
+          <pre><code><span class="comment"># hyprland.conf</span>
+<span class="kw">general</span> {'{'}
+  <span class="prop">gaps_in</span> = <span class="str">5</span>
+  <span class="prop">gaps_out</span> = <span class="str">10</span>
+  <span class="prop">border_size</span> = <span class="str">2</span>
+{'}'}
+<span class="kw">decoration</span> {'{'}
+  <span class="prop">rounding</span> = <span class="str">10</span>
+{'}'}</code></pre>
+        </div>
+      </section>
+
+      <section aria-labelledby="natural-languages">
+        <h2 id="natural-languages"><span class="secno">§7</span> <span>{t('s7.title')}</span></h2>
+        <p>{t('s7.intro')}</p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th scope="col">{t('s7.col.language')}</th><th scope="col">{t('s7.col.tag')}</th><th scope="col">{t('s7.col.sample')}</th></tr>
+            </thead>
+            <tbody>
+              {naturalLanguages.map(({ name, tag, sample }) => (
+                <tr><td lang={tag}>{name}</td><td class="mono">{tag}</td><td lang={tag}>{sample}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="note" role="note">
+          <span class="box-label">{t('note.label')}</span>
+          <p>{t('s7.note')}</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="certifications">
+        <h2 id="certifications"><span class="secno">§8</span> <span>{t('certs.title')}</span></h2>
+        <p>{t('certs.intro')}</p>
+        <ul class="certifications">
+          {certifications.map((certification) => <li>{localized(certification.name, language)}</li>)}
+        </ul>
+      </section>
+
+      <section aria-labelledby="contact">
+        <h2 id="contact"><span class="secno">§9</span> <span>{t('s8.title')}</span></h2>
+        <p>{t('s8.body')}</p>
+        <dl class="facts">
+          <dt>GitHub</dt><dd><a href="https://github.com/Sparklingstadt">github.com/Sparklingstadt</a></dd>
+          <dt>Issues</dt><dd><a href={`${repository}/issues`}>{t('s8.issues')}</a></dd>
+        </dl>
+      </section>
+
+      <section aria-labelledby="proposals">
+        <h2 id="proposals"><span class="secno">§10</span> <span>{t('s9.title')}</span></h2>
+        <p>{t('s9.body')}</p>
+        <p><a href={`${base}proposals/mocks/`}>{t('s9.link')}</a></p>
+        <div class="note" role="note">
+          <span class="box-label">{t('note.label')}</span>
+          <p>{t('s9.note')}</p>
+        </div>
+      </section>
+
+      <section class="references" aria-labelledby="references">
+        <h2 id="references">{t('refs.title')}</h2>
+        <dl>
+          <dt>[HIG]</dt><dd>Apple. <cite>Human Interface Guidelines</cite>. <a href="https://developer.apple.com/design/human-interface-guidelines/">developer.apple.com/design/human-interface-guidelines</a></dd>
+          <dt>[HTML]</dt><dd>WHATWG. <cite>HTML Living Standard</cite>. <a href="https://html.spec.whatwg.org/">html.spec.whatwg.org</a></dd>
+          <dt>[RFC2119]</dt><dd>S. Bradner. <cite>Key words for use in RFCs to Indicate Requirement Levels</cite>. <a href="https://www.rfc-editor.org/rfc/rfc2119">rfc-editor.org/rfc/rfc2119</a></dd>
+        </dl>
+      </section>
+    </main>
+  </div>
+
+  <footer class="wrap site-footer">
+    <span>{t('motto')}</span>
+    <a href="#main">{t('footer.top')}</a>
+  </footer>
+</SpecLayout>

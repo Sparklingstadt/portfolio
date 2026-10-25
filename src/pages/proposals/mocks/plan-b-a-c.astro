@@ -1,0 +1,215 @@
+---
+// Generated from the original mock; shared text comes from src/data/site.json.
+import { certification, mockDataJson, profileLinks, profileText, text } from '../../../lib/site.js';
+---
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>推奨案 Hybrid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Noto+Sans+SC:wght@500;700&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer is:inline></script>
+<script type="application/json" id="mock-data" set:html={mockDataJson}></script>
+<script src="../data.js" defer is:inline></script>
+</head>
+<body>
+<div class="page">
+
+<header class="site-header">
+<div class="header-inner">
+<span class="site-name"><span data-profile="name">{profileText.name}</span></span>
+<nav class="site-nav" aria-label="セクション">
+<a href="#axes" data-content="label.axes">{text('label.axes')}</a>
+<a href="#projects" data-content="label.projects">{text('label.projects')}</a>
+<a href="#notes" data-content="label.notes">{text('label.notes')}</a>
+<a href="#languages">言語</a>
+<a href="#contact" data-content="label.contact">{text('label.contact')}</a>
+</nav>
+<div class="lang-switch" role="group" aria-label="表示言語">
+<button type="button" lang="ja" aria-pressed="true">JA</button>
+<button type="button" lang="zh-Hans" aria-pressed="false">中</button>
+<button type="button" lang="ru" aria-pressed="false">RU</button>
+<button type="button" lang="cs" aria-pressed="false">CS</button>
+<button type="button" lang="en" aria-pressed="false">EN</button>
+</div>
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-text">
+<p class="greetings">
+<span lang="ja" data-content-lang="greeting">{text('greeting.ja')}</span><span lang="zh-Hans" class="font-sc" data-content-lang="greeting">{text('greeting.zh-Hans')}</span><span lang="ru" data-content-lang="greeting">{text('greeting.ru')}</span><span lang="cs" data-content-lang="greeting">{text('greeting.cs')}</span>
+</p>
+<h1 class="tagline" lang="ja" data-content-lang="tagline">{text('tagline.ja')}</h1>
+<p class="lead" data-content="intro.web">{text('intro.web')}</p>
+<div class="actions">
+<a class="btn btn-primary" href="#projects" data-content="label.viewProjects">{text('label.viewProjects')}</a>
+<a class="btn btn-secondary" href="#contact" data-content="label.contactMe">{text('label.contactMe')}</a>
+</div>
+</div>
+<div class="code-card">
+<div class="code-card-title">me.ts</div>
+<div class="code-scroll">
+<pre><span class="tk-kw">interface</span> Me {'{'}
+  <span class="tk-key">role</span>: <span class="tk-str">"Web Engineer"</span>;
+  <span class="tk-key">stack</span>: [<span class="tk-str">"TypeScript"</span>, <span class="tk-str">"Node.js"</span>];
+  <span class="tk-key">learning</span>: [<span class="tk-str">"Go"</span>, <span class="tk-str">"Kotlin"</span>];
+  <span class="tk-key">reading</span>: <span class="tk-str">"Apple HIG"</span>;
+  <span class="tk-key">speaks</span>: [<span class="tk-str">"ja"</span>, <span class="tk-str">"zh"</span>, <span class="tk-str">"ru"</span>, <span class="tk-str">"cs"</span>];
+{'}'}</pre>
+</div>
+</div>
+</section>
+
+<main class="main">
+
+<section id="axes" class="sec">
+<h2 data-content="label.axes">{text('label.axes')}</h2>
+<div class="axes-grid">
+<div class="card axis">
+<span class="axis-label" data-content="axis.typesLabel">{text('axis.typesLabel')}</span>
+<h3 data-content="axis.typesTitle">{text('axis.typesTitle')}</h3>
+<p data-content="axis.typesBody">{text('axis.typesBody')}</p>
+</div>
+<div class="card axis">
+<span class="axis-label" data-content="axis.standardsLabel">{text('axis.standardsLabel')}</span>
+<h3 data-content="axis.standardsTitle">{text('axis.standardsTitle')}</h3>
+<p>Web標準と Node.js を土台に、HIG の原則で使いやすさを判断する。</p>
+</div>
+<div class="card axis">
+<span class="axis-label" data-content="axis.languagesLabel">{text('axis.languagesLabel')}</span>
+<h3 data-content="axis.languagesTitle">{text('axis.languagesTitle')}</h3>
+<p data-content="axis.languagesBody">{text('axis.languagesBody')}</p>
+</div>
+</div>
+</section>
+
+<section id="projects" class="sec">
+<h2 data-content="label.projects">{text('label.projects')}</h2>
+<div class="projects-grid">
+<article class="card project">
+<div class="project-head">
+<h3 data-content="project.name1">{text('project.name1')}</h3>
+<span class="project-stack" data-content="project.stackWeb">{text('project.stackWeb')}</span>
+</div>
+<dl class="project-dl">
+<dt data-content="label.problem">{text('label.problem')}</dt><dd data-content="project.problem">{text('project.problem')}</dd>
+<dt data-content="label.decision">{text('label.decision')}</dt><dd data-content="project.decision">{text('project.decision')}</dd>
+<dt data-content="label.learned">{text('label.learned')}</dt><dd data-content="project.learned">{text('project.learned')}</dd>
+</dl>
+<a class="more" href="#projects" data-content="label.readMore">{text('label.readMore')}</a>
+</article>
+<article class="card project">
+<div class="project-head">
+<h3 data-content="project.name2">{text('project.name2')}</h3>
+<span class="project-stack">Go</span>
+</div>
+<dl class="project-dl">
+<dt data-content="label.problem">{text('label.problem')}</dt><dd data-content="project.problem">{text('project.problem')}</dd>
+<dt data-content="label.decision">{text('label.decision')}</dt><dd data-content="project.compare">{text('project.compare')}</dd>
+<dt data-content="label.learned">{text('label.learned')}</dt><dd data-content="project.learned">{text('project.learned')}</dd>
+</dl>
+<a class="more" href="#projects" data-content="label.readMore">{text('label.readMore')}</a>
+</article>
+</div>
+</section>
+
+<section id="notes" class="sec sec-notes">
+<h2 data-content="label.notes">{text('label.notes')}</h2>
+<div class="card list">
+<a class="note-row" href="#notes">
+<span class="note-kind" data-kind="hig">HIG</span>
+<span class="note-title" data-content="note.hig">{text('note.hig')}</span>
+<span class="note-date" data-content="note.date">{text('note.date')}</span>
+<svg class="chevron" width="8" height="14" viewBox="0 0 8 14" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+<a class="note-row" href="#notes">
+<span class="note-kind" data-kind="tech" data-content="note.kindTech">{text('note.kindTech')}</span>
+<span class="note-title" data-content="note.web">{text('note.web')}</span>
+<span class="note-date" data-content="note.date">{text('note.date')}</span>
+<svg class="chevron" width="8" height="14" viewBox="0 0 8 14" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+<a class="note-row" href="#notes">
+<span class="note-kind" data-kind="lang" data-content="note.kindLanguage">{text('note.kindLanguage')}</span>
+<span class="note-title" data-content="note.languages">{text('note.languages')}</span>
+<span class="note-date" data-content="note.date">{text('note.date')}</span>
+<svg class="chevron" width="8" height="14" viewBox="0 0 8 14" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+<a class="note-row" href="#notes">
+<span class="note-kind" data-kind="tech" data-content="note.kindTech">{text('note.kindTech')}</span>
+<span class="note-title">[Go と TypeScript の比較メモ]</span>
+<span class="note-date" data-content="note.date">{text('note.date')}</span>
+<svg class="chevron" width="8" height="14" viewBox="0 0 8 14" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</div>
+</section>
+
+<section id="languages" class="languages">
+<div class="languages-intro">
+<h2>言語</h2>
+<p>同じ「5件のプロジェクト」でも、言語ごとに語の形が変わります。このサイトでは Intl.PluralRules で出し分けています。</p>
+</div>
+<div class="card list languages-list">
+<div class="lang-row">
+<span lang="zh-Hans" class="lang-name font-sc" data-content-lang="languageName">{text('languageName.zh-Hans')}</span>
+<span class="lang-level">[学習期間・レベル]</span>
+<span lang="zh-Hans" class="lang-count font-sc">5 个项目</span>
+</div>
+<div class="lang-row">
+<span lang="ru" class="lang-name" data-content-lang="languageName">{text('languageName.ru')}</span>
+<span class="lang-level">[学習期間・レベル]</span>
+<span lang="ru" class="lang-count">5 проектов</span>
+</div>
+<div class="lang-row">
+<span lang="cs" class="lang-name" data-content-lang="languageName">{text('languageName.cs')}</span>
+<span class="lang-level">[学習期間・レベル]</span>
+<span lang="cs" class="lang-count">5 projektů</span>
+</div>
+</div>
+</section>
+
+<section id="certifications" class="sec sec-contact">
+<h2 data-content="label.certifications">{text('label.certifications')}</h2>
+<div class="card list contact-list">
+<div class="contact-row"><span class="contact-label" data-certification="hsk1">{certification('hsk1')}</span></div>
+<div class="contact-row"><span class="contact-label" data-certification="hsk2">{certification('hsk2')}</span></div>
+<div class="contact-row"><span class="contact-label" data-certification="hsk3">{certification('hsk3')}</span></div>
+<div class="contact-row"><span class="contact-label" data-certification="hsk4">{certification('hsk4')}</span></div>
+</div>
+</section>
+
+<section id="contact" class="sec sec-contact">
+<h2 data-content="label.contact">{text('label.contact')}</h2>
+<div class="card list contact-list">
+<div class="contact-row">
+<span class="contact-label" data-content="label.mail">{text('label.mail')}</span>
+<span class="contact-mail"><span data-profile="email">{profileText.email}</span></span>
+</div>
+<a class="contact-row" href={profileLinks.github} data-profile-link="github">
+<span class="contact-label">GitHub</span>
+<span class="contact-link"><span data-profile="github">{profileText.github}</span></span>
+</a>
+</div>
+</section>
+
+<footer class="site-footer">
+<span class="footer-title">このサイトについて</span>
+<div class="badges">
+<span>JavaScript なしで読める</span>
+<span>prefers-color-scheme 対応</span>
+<span>View Transitions API</span>
+<span>hreflang で5言語</span>
+<span>Lighthouse [スコア]</span>
+</div>
+<span>ソースコードと設計判断のメモは <a href="#contact">GitHub</a> で公開しています。</span>
+</footer>
+
+</main>
+</div>
+</body>
+</html>
