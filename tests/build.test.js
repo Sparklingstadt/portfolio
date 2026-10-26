@@ -8,7 +8,7 @@ const dist = new URL('../dist/', import.meta.url);
 const site = JSON.parse(await readFile(new URL('../src/data/site.json', import.meta.url), 'utf8'));
 const skip = existsSync(dist) ? false : 'dist/ not found; run npm run build';
 const page = (path) => readFile(new URL(`${path}index.html`, dist), 'utf8');
-const MOCKS = ['plan-b', 'plan-c', 'plan-b-a-c', 'plan-hig-material3', 'plan-desktop-macos-arch', 'plan-desktop'];
+const MOCKS = ['plan-b', 'plan-c', 'plan-b-a-c', 'plan-hig-material3', 'plan-desktop-macos-arch', 'plan-desktop', 'plan-swiss'];
 // Astro escapes text, so compare against escaped values.
 const escape = (value) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 

@@ -70,13 +70,20 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
             <dt>操作</dt><dd>デザイン、ダークモード、表示言語、プロジェクトの絞り込み</dd>
           </dl>
         </article>
+        <article class="project" aria-labelledby="plan-swiss">
+          <h3 id="plan-swiss"><span class="secno">§1.7</span> <a href="plan-swiss/">plan-swiss</a></h3>
+          <p>スイス・スタイル(国際タイポグラフィ様式)の案。12カラムのグリッド、左揃えの大きなサンセリフ、白・黒・赤の3色。</p>
+          <dl class="facts">
+            <dt>操作</dt><dd>グリッドの表示(G キー)、作品のホバー</dd>
+          </dl>
+        </article>
       </section>
 
       <section aria-labelledby="note">
         <h2 id="note"><span class="secno">§2</span> 注記</h2>
         <div class="note" role="note">
           <span class="box-label">Note</span>
-          <p>名前・GitHub・メールアドレス、所持資格、複数のモックで共通する文言(5言語の挨拶とキャッチコピー、見出し、プロジェクト、ノート、Rice の話など)は、6つのモックすべてが共通の <code>src/data/site.json</code> からビルド時に読み込んでいます。角括弧 [ ] の部分は仮の文字列です。モックは検索エンジンに登録されません。</p>
+          <p>名前・GitHub・メールアドレス、所持資格、複数のモックで共通する文言(5言語の挨拶とキャッチコピー、見出し、プロジェクト、ノート、Rice の話など)は、7つのモックすべてが共通の <code>src/data/site.json</code> からビルド時に読み込んでいます。角括弧 [ ] の部分は仮の文字列です。モックは検索エンジンに登録されません。</p>
         </div>
         <p><a href={base}>Sparklingstadt Standard に戻る</a></p>
       </section>

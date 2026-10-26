@@ -1,0 +1,176 @@
+---
+// Swiss-style (International Typographic Style) mock; profile and certifications come from src/data/site.json.
+import { certification, mockDataJson, profileLinks, profileText } from '../../../lib/site.js';
+---
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>案 Swiss Grid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer is:inline></script>
+<script type="application/json" id="mock-data" set:html={mockDataJson}></script>
+<script src="../data.js" defer is:inline></script>
+</head>
+<body>
+<div class="overlay" id="overlay" hidden aria-hidden="true">
+  <div class="wrap grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+
+<header class="wrap grid head">
+  <a class="brand" href="#top"><span data-profile="name">{profileText.name}</span></a>
+  <nav aria-label="メイン">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="toggle" id="grid-toggle" aria-pressed="false" type="button"><span class="box"></span>Grid <kbd>G</kbd></button>
+</header>
+
+<main id="top">
+  <section class="wrap hero" aria-label="イントロダクション">
+    <div class="grid hero-meta">
+      <div><span class="label mute">Name</span><br><span data-profile="name">{profileText.name}</span></div>
+      <div><span class="label mute">Role</span><br>SWE &amp; Web系エンジニア</div>
+      <div><span class="label mute">Based in</span><br><span class="num">千葉 35.61°N 140.12°E<br>東京 35.68°N 139.69°E</span></div>
+      <div><span class="label mute">Local time</span><br><span class="num" id="clock">--:--:--</span> JST</div>
+    </div>
+    <h1 class="hero-name" aria-label="Sparklingstadt"><span>Sparkling</span><span>stadt</span></h1>
+    <div class="disc" aria-hidden="true"></div>
+    <div class="grid hero-foot">
+      <div class="status"><i aria-hidden="true"></i>2026年11月よりお仕事のご依頼を受付可能</div>
+      <p class="statement">ちょっとだけ良くなった、明日を創る。<small>Software &amp; web engineering, Chiba and Tokyo.</small></p>
+    </div>
+  </section>
+
+  <section class="wrap block" id="work" aria-labelledby="work-title">
+    <div class="grid sec-head">
+      <div class="lab label"><span class="num">04</span> Projects</div>
+      <h2 id="work-title">Selected Work</h2>
+    </div>
+
+    <div class="works">
+      <article class="card">
+        <a class="cover c-zh" href="https://ffpf-zhuelog.vercel.app/" target="_blank" rel="noopener" aria-label="Zhuelog のアプリを開く">
+          <span class="han">学</span>
+          <span class="py">xué</span>
+          <span class="tone">第2声, 学ぶ</span>
+          <span class="tx">Zhuelog<br>語学アプリ</span>
+          <span class="stamp">HSK</span>
+        </a>
+        <div class="card-meta">
+          <h3>Zhuelog</h3>
+          <p>語学アプリ</p>
+          <p class="tech num">Next.js · TypeScript</p>
+          <div class="links"><a class="link" href="https://ffpf-zhuelog.vercel.app/" target="_blank" rel="noopener">Demo</a><a class="link" href="https://github.com/Sparklingstadt/ffpf-zhuelog" target="_blank" rel="noopener">GitHub</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="cover c-ty" href="https://typle-r-six.vercel.app/" target="_blank" rel="noopener" aria-label="Typle のアプリを開く">
+          <span class="word">Typle<span class="caret"></span></span>
+          <span class="tx">Typing<br>Practice</span>
+          <span class="keys"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        </a>
+        <div class="card-meta">
+          <h3>Typle</h3>
+          <p>タイプ練習アプリ</p>
+          <p class="tech num">Next.js · TypeScript</p>
+          <div class="links"><a class="link" href="https://typle-r-six.vercel.app/" target="_blank" rel="noopener">Demo</a><span class="mute">ソースコード非公開</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="cover c-candy" href="https://candy-rain-store.vercel.app/" target="_blank" rel="noopener" aria-label="Candy Rain Store のアプリを開く">
+          <span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="d d4"></span><span class="d d5"></span><span class="d d6"></span>
+          <span class="name">Candy<br>Rain Store</span>
+          <span class="tx">EC Site<br>Demo</span>
+        </a>
+        <div class="card-meta">
+          <h3>Candy Rain Store</h3>
+          <p>ECサイトのデモ</p>
+          <p class="tech num">Next.js · Prisma · PostgreSQL</p>
+          <div class="links"><a class="link" href="https://candy-rain-store.vercel.app/" target="_blank" rel="noopener">Demo</a><a class="link" href="https://github.com/Sparklingstadt/prd-ec-shop" target="_blank" rel="noopener">GitHub</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="cover c-ramen" href="https://prd-ramen-concierge-frontend.vercel.app/" target="_blank" rel="noopener" aria-label="Ramen Concierge のアプリを開く">
+          <span class="tx">Ramen<br>Concierge</span>
+          <span class="tx tx2">2026.10<br><span class="num">12</span>杯</span>
+          <span class="wk"><b>S</b><b>M</b><b>T</b><b>W</b><b>T</b><b>F</b><b>S</b></span>
+          <span class="cal"><i class="x"></i><i class="x"></i><i class="x"></i><i class="x"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i></span>
+        </a>
+        <div class="card-meta">
+          <h3>Ramen Concierge</h3>
+          <p>一杯ごとのラーメンを記録し、カレンダーで振り返るアプリ</p>
+          <p class="tech num">Next.js · TypeScript</p>
+          <div class="links"><a class="link" href="https://prd-ramen-concierge-frontend.vercel.app/" target="_blank" rel="noopener">Demo</a><a class="link" href="https://github.com/Sparklingstadt/prd-ramen-concierge-frontend" target="_blank" rel="noopener">GitHub</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap block" id="about" aria-labelledby="about-title">
+    <div class="grid sec-head">
+      <div class="lab label">Profile</div>
+      <h2 id="about-title">About</h2>
+    </div>
+    <div class="grid about">
+      <p class="bio">千葉と東京を拠点にするソフトウェアエンジニア。Webベースの技術、とくに Node.js と TypeScript が好きです。</p>
+      <div class="facts">
+        <div>
+          <h3 class="label">Role</h3>
+          <ul>
+            <li>Software Engineer</li>
+            <li>Web系エンジニア</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="label">Stack</h3>
+          <ul>
+            <li>Node.js</li>
+            <li>TypeScript</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="label">Certification</h3>
+          <ul>
+            <li data-certification="hsk1">{certification('hsk1')}</li><li data-certification="hsk2">{certification('hsk2')}</li><li data-certification="hsk3">{certification('hsk3')}</li><li data-certification="hsk4">{certification('hsk4')}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap block" id="contact" aria-labelledby="contact-title">
+    <div class="grid sec-head">
+      <div class="lab label">Get in touch</div>
+      <h2 id="contact-title">Contact</h2>
+    </div>
+    <div class="grid contact">
+      <p>お仕事のご相談は、メールでお気軽にどうぞ。</p>
+      <div class="mail">
+        <span class="addr" id="addr" data-profile="email">{profileText.email}</span>
+        <button class="copy" id="copy" type="button">アドレスをコピー</button>
+      </div>
+      <ul class="social">
+        <li><span class="label mute">X</span><a class="link" href="https://x.com/sparklingstadt" target="_blank" rel="noopener">@sparklingstadt</a></li>
+        <li><span class="label mute">GitHub</span><a class="link" href={profileLinks.github} data-profile-link="github" target="_blank" rel="noopener" data-profile="github">{profileText.github}</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap grid foot">
+  <div class="num">© 2026 <span data-profile="name">{profileText.name}</span></div>
+  <div>Hanken Grotesk と Noto Sans JP で組版。12カラムのグリッドで設計。</div>
+  <div>G キーでグリッドを表示 · <a class="link" href="../">モック一覧に戻る</a></div>
+</footer>
+</body>
+</html>

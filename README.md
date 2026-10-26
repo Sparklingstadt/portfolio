@@ -22,7 +22,7 @@ npm run preview  # serves dist/
 | `src/i18n/{ja,en,zh}.json` | UI strings of the main page; keep the keys identical across languages |
 | `src/pages/[...lang].astro` | The main page, built once per language |
 | `src/layouts/SpecLayout.astro`, `src/styles/spec.css` | Head, theme toggle, and styles of spec-style pages |
-| `src/pages/proposals/mocks/` | The mock list and the six design mocks |
+| `src/pages/proposals/mocks/` | The mock list and the seven design mocks |
 | `public/proposals/mocks/<plan>/` | Each mock's own `style.css` and `script.js` |
 | `public/proposals/mocks/data.js` | Re-renders shared text when a mock switches language |
 
@@ -36,7 +36,7 @@ Change `src/data/site.json` and rebuild. Projects (§5) need an `id`, a `name`, 
 
 ## Design proposals
 
-`/proposals/mocks/` lists six design mocks (all `noindex`):
+`/proposals/mocks/` lists seven design mocks (all `noindex`):
 
 - `plan-b`: Apple HIG style
 - `plan-c`: multilingual (Intl.PluralRules and Intl.DateTimeFormat demos)
@@ -44,6 +44,7 @@ Change `src/data/site.json` and rebuild. Projects (§5) need an `id`, a `name`, 
 - `plan-hig-material3`: one markup switched between HIG and Material 3 with design tokens
 - `plan-desktop-macos-arch`: desktop of windows switched between macOS and Arch Linux + Hyprland
 - `plan-desktop`: macOS, Arch Linux + Hyprland, Material 3, and HarmonyOS
+- `plan-swiss`: Swiss (International Typographic Style) grid with the four projects
 
 Astro writes the profile, certifications, and shared copy from `site.json` into each mock at build time. Each mock also inlines that data as `<script type="application/json" id="mock-data">`, so `data.js` can fill elements marked `data-profile`, `data-profile-link`, `data-content`, `data-content-lang`, or `data-certification` again after a language switcher changes their `lang`.
 
